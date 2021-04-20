@@ -15,12 +15,9 @@ cd lib32-mesa-git && env _compiler=2 makepkg -si --noconfirm && cd ..
 
 mkdir -p package-$(date -I)
 
-cp -v */package-$(date -I)/*.pkg.tar.zst package-$(date -I)/
 cp -v */*.pkg.tar.zst package-$(date -I)/
 
 # clean build dir
 
 rm -rf */src/
 rm -rf */pkg/
-rm -rf */*/src/
-rm -rf */*/pkg/
