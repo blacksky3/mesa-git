@@ -52,10 +52,10 @@ source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
         "LICENSE")
 md5sums=("SKIP"
          "SKIP")
-if [[ $_llvm = "y" ]]; then
-  source+=("0001-enable-llvm-by-default.patch")
-  md5sums+=("SKIP") #0001-enable-llvm-by-default.patch
-fi
+#if [[ $_llvm = "y" ]]; then
+#  source+=("0001-enable-llvm-by-default.patch")
+#  md5sums+=("SKIP") #0001-enable-llvm-by-default.patch
+#fi
 
 pkgver(){
   cd mesa
