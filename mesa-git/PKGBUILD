@@ -10,15 +10,6 @@
 
 #######################################
 
-#Enable llvm by default
-#Set 'y' to enable
-#Default is set to empty, so no llvm by default patch
-if [ -z ${_llvm+x} ]; then
-  _llvm=
-fi
-
-#######################################
-
 #Set '1' to build with GCC
 #Set '2' to build with CLANG
 #Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
@@ -45,17 +36,13 @@ depends=('libdrm' 'libxcb' 'wayland' 'python' 'libclc' 'clang' 'libx11' 'libxshm
          'glslang')
 #depends+=('libsensors.so' 'libexpat.so' 'libvulkan.so')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
-           'mesa-stable' 'mesa-rc')
+           'mesa-llvm-git')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'vulkan-driver' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
           'opengl-driver' 'opencl-driver' 'mesa-libgl')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
         "LICENSE")
 md5sums=("SKIP"
          "SKIP")
-#if [[ $_llvm = "y" ]]; then
-#  source+=("0001-enable-llvm-by-default.patch")
-#  md5sums+=("SKIP") #0001-enable-llvm-by-default.patch
-#fi
 
 pkgver(){
   cd mesa
