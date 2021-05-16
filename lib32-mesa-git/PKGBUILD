@@ -10,15 +10,6 @@
 
 #######################################
 
-#Enable llvm by default
-#Set 'y' to enable
-#Default is set to empty, so no llvm by default patch
-if [ -z ${_llvm+x} ]; then
-  _llvm=
-fi
-
-#######################################
-
 #Set '1' to build with GCC
 #Set '2' to build with CLANG
 #Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
@@ -48,10 +39,8 @@ provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-ra
           'lib32-vulkan-mesa-layers' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-opencl-driver' 'lib32-mesa-libgl')
 url="https://mesa3d.org/"
 license=('MIT')
-source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
-        "LICENSE")
-md5sums=("SKIP"
-         "SKIP")
+source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git')
+md5sums=('SKIP')
 
 pkgver(){
   cd mesa
@@ -119,7 +108,7 @@ END
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
-  -Dvulkan-drivers=amd,intel,swrast \
+  -Dvulkan-drivers=amd,intel,swrast,virtio-experimental \
   -Dshader-cache=enabled \
   -Dvulkan-layers=device-select,intel-nullhw,overlay \
   -Dshared-glapi=enabled \
@@ -177,5 +166,6 @@ package_lib32-mesa-git(){
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
 
   # installing license
-  install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" -m644 LICENSE
+  #install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" -m644 LICENSE
+  install -Dm644 "$srcdir"/mesa/docs/license.rst "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
