@@ -60,6 +60,8 @@ prepare(){
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  sed -i "s/options.StackAlignmentOverride = 4;/ /" src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
 }
 
 build(){
@@ -76,7 +78,7 @@ fi
 export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
   cd mesa
-  
+
 cat >crossfile.ini <<END
 [binaries]
 llvm-config = '/usr/bin/llvm-config32'
