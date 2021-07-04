@@ -99,7 +99,7 @@ END
   -Dplatforms=x11,wayland \
   -Ddri3=enabled \
   -Ddri-drivers=i915,i965,r100,r200,nouveau \
-  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink \
+  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,d3d12,crocus \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
   -Dgallium-xvmc=enabled \
