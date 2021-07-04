@@ -124,6 +124,7 @@ fi
   -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
+  -Dprefer-crocus=true \
   -Dzstd=enabled \
   -Dzlib=enabled \
   -Dsse2=false
