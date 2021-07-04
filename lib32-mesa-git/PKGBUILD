@@ -134,6 +134,7 @@ END
   -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
+  -Dprefer-iris=true \
   -Dprefer-crocus=true \
   -Dzstd=enabled \
   -Dzlib=enabled \
