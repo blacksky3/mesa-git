@@ -89,7 +89,7 @@ fi
   -Dplatforms=x11,wayland \
   -Ddri3=enabled \
   -Ddri-drivers=i915,i965,r100,r200,nouveau \
-  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,d3d12,crocus \
+  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
   -Dgallium-xvmc=enabled \
@@ -97,7 +97,7 @@ fi
   -Dgallium-va=enabled \
   -Dgallium-xa=enabled \
   -Dgallium-nine=true \
-  -Dgallium-d3d10umd=true \
+  -Dgallium-d3d10umd=false \
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
