@@ -107,6 +107,7 @@ END
   -Dgallium-va=enabled \
   -Dgallium-xa=enabled \
   -Dgallium-nine=true \
+  -Dgallium-d3d10umd=true \
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
