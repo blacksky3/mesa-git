@@ -21,7 +21,7 @@ fi
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
-pkgver=21.2.0_devel
+pkgver=21.3.0_devel
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('meson' 'ninja' 'bison' 'lib32-flex' 'python' 'python-mako' 'python-appdirs' 'python-evdev' 'lua' 'polly' 'valgrind'
@@ -103,6 +103,7 @@ END
   -D sysconfdir=/etc \
   --libdir=/usr/lib32 \
   -Dplatforms=x11,wayland \
+  -Degl-native-platform=auto \
   -Ddri3=enabled \
   -Ddri-drivers=i915,i965,r100,r200,nouveau \
   -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus \
