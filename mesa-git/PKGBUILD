@@ -21,7 +21,7 @@ fi
 
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
-pkgver=21.3.0_devel.2021_08_13.143585.5f2dbd45f20
+pkgver=21.3.0_devel
 pkgrel=1
 arch=('x86_64')
 url="https://mesa3d.org/"
@@ -69,7 +69,6 @@ prepare(){
   sed -i 's/lc->divergent_branch_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_branch, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
   sed -i 's/lc->divergent_if_old = std::exchange(ctx->cf_info.parent_if.is_divergent, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
 }
-
 
 build(){
 if [[ $_compiler = "1" ]]; then
