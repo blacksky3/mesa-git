@@ -60,9 +60,7 @@ prepare(){
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-}
-
-prepare(){
+  
   sed -i 's/lc->header_idx_old = std::exchange(ctx->cf_info.parent_loop.header_idx, loop_header->index);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp 
   sed -i 's/lc->exit_old = std::exchange(ctx->cf_info.parent_loop.exit, &lc->loop_exit);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
   sed -i 's/lc->divergent_cont_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_continue, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
