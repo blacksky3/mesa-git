@@ -62,6 +62,12 @@ prepare(){
   done
 
   sed -i "s/options.StackAlignmentOverride = 4;/ /" src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+  
+  sed -i 's/lc->header_idx_old = std::exchange(ctx->cf_info.parent_loop.header_idx, loop_header->index);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp 
+  sed -i 's/lc->exit_old = std::exchange(ctx->cf_info.parent_loop.exit, &lc->loop_exit);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  sed -i 's/lc->divergent_cont_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_continue, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  sed -i 's/lc->divergent_branch_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_branch, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  sed -i 's/lc->divergent_if_old = std::exchange(ctx->cf_info.parent_if.is_divergent, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
 }
 
 build(){
