@@ -21,13 +21,13 @@ fi
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
-pkgver=21.3.0_devel
+pkgver=21.3.0_devel.145020.8c6e789c240
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('meson' 'ninja' 'bison' 'lib32-flex' 'python' 'python-mako' 'python-appdirs' 'python-evdev' 'lua' 'polly' 'valgrind'
              'xorgproto' 'wayland-protocols' 'glslang' 'libclc' 'elfutils' 'libarchive' 'libconfig' 'compiler-rt' 'lib32-libxcb'
              'lib32-wayland' 'lib32-libxml2' 'lib32-libx11' 'lib32-libvdpau' 'lib32-libelf' 'lib32-libglvnd' 'lib32-ncurses'
-             'lib32-libva' 'lib32-libxrandr' 'lib32-expat' 'lib32-libdrm' 'lib32-libxvmc' 'lib32-libepoxy' 'lib32-libxv'
+             'lib32-libva' 'lib32-libxrandr' 'lib32-expat' 'lib32-libdrm' 'lib32-libepoxy' 'lib32-libxv'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-zstd' 'lib32-lm_sensors' 'lib32-libunwind'
              'lib32-vulkan-icd-loader' 'lib32-clang' 'lib32-llvm' 'lib32-llvm-libs' 'lib32-glibc' 'gcc' 'lib32-gcc-libs')
 depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-wayland' 'python' 'libclc' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-zstd' 'lib32-libelf'
@@ -45,7 +45,7 @@ md5sums=('SKIP')
 pkgver(){
   cd mesa
   read -r _ver <VERSION
-  echo ${_ver/-/_}.$(date -I | sed 's/-/_/' | sed 's/-/_/').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare(){
@@ -61,13 +61,13 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
-  sed -i "s/options.StackAlignmentOverride = 4;/ /" src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
-  
-  sed -i 's/lc->header_idx_old = std::exchange(ctx->cf_info.parent_loop.header_idx, loop_header->index);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp 
-  sed -i 's/lc->exit_old = std::exchange(ctx->cf_info.parent_loop.exit, &lc->loop_exit);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  sed -i 's/lc->divergent_cont_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_continue, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  sed -i 's/lc->divergent_branch_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_branch, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  sed -i 's/lc->divergent_if_old = std::exchange(ctx->cf_info.parent_if.is_divergent, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  #sed -i "s/options.StackAlignmentOverride = 4;/ /" src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+
+  #sed -i 's/lc->header_idx_old = std::exchange(ctx->cf_info.parent_loop.header_idx, loop_header->index);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  #sed -i 's/lc->exit_old = std::exchange(ctx->cf_info.parent_loop.exit, &lc->loop_exit);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  #sed -i 's/lc->divergent_cont_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_continue, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  #sed -i 's/lc->divergent_branch_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_branch, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
+  #sed -i 's/lc->divergent_if_old = std::exchange(ctx->cf_info.parent_if.is_divergent, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
 }
 
 build(){
@@ -109,7 +109,7 @@ END
   -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
-  -Dgallium-xvmc=enabled \
+  -Dgallium-xvmc=disabled \
   -Dgallium-omx=disabled \
   -Dgallium-va=enabled \
   -Dgallium-xa=enabled \
@@ -138,7 +138,7 @@ END
   -Dlmsensors=enabled \
   -Dselinux=false \
   -Dosmesa=true \
-  -Dswr-arches=avx,avx2,knl,skx \
+  -Dswr-arches=avx,avx2 \
   -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
