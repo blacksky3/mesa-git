@@ -21,7 +21,7 @@ fi
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
-pkgver=21.3.0_devel.145020.8c6e789c240
+pkgver=21.3.0_devel.145708.9e3293bcd4c
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('meson' 'ninja' 'bison' 'lib32-flex' 'python' 'python-mako' 'python-appdirs' 'python-evdev' 'lua' 'polly' 'valgrind'
@@ -94,6 +94,32 @@ END
 
   mkdir -p -v build_32
 
+  # gallium-opencl is disabled for build against llvm master branch commit : e8806d748643e4b90fa67ed6f4819653e64e66d9 and mesa master branch commit : 9e3293bcd4c34b68b83efc0e7308f7d701e43db7
+  # we will see if this get fixed soon
+  # issue reported by me at : https://gitlab.freedesktop.org/mesa/mesa/-/issues/5444
+  # the issue can be on llvm-project side or mesa side. We will recompile in day to come if this get fixed
+
+  #Library clang-cpp found: YES
+  #Compiler for C++ supports link arguments -Wl,--rpath=/usr/lib32: YES
+  #Checking if "dep-clang-usable" with dependencies LLVM, -lclang-cpp, threads runs: DID NOT COMPILE
+  #Library clangCodeGen found: YES
+  #Library clangFrontendTool found: YES
+  #Library clangFrontend found: YES
+  #Library clangDriver found: YES
+  #Library clangSerialization found: YES
+  #Library clangParse found: YES
+  #Library clangSema found: YES
+  #Library clangAnalysis found: YES
+  #Library clangAST found: YES
+  #Library clangASTMatchers found: YES
+  #Library clangEdit found: YES
+  #Library clangLex found: YES
+  #Library clangBasic found: YES
+  #Checking if "dep-clang-usable" with dependencies LLVM, -lclangCodeGen, -lclangFrontendTool, -lclangFrontend, -lclangDriver, -lclangSerialization, 
+  # -lclangParse, -lclangSema, -lclangAnalysis, -lclangAST, -lclangASTMatchers, -lclangEdit, -lclangLex, -lclangBasic, -lPolly, -lPollyISL, threads runs: DID NOT COMPILE
+
+  #src/gallium/targets/opencl/meson.build:83:6: ERROR: Problem encountered: No usable clang found!
+
   meson setup build_32/ \
   --native-file crossfile.ini \
   -D b_ndebug=true \
@@ -115,7 +141,7 @@ END
   -Dgallium-xa=enabled \
   -Dgallium-nine=true \
   -Dgallium-d3d10umd=false \
-  -Dgallium-opencl=icd \
+  -Dgallium-opencl=disabled \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
   -Dvulkan-drivers=amd,intel,swrast,virtio-experimental \
