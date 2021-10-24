@@ -108,7 +108,7 @@ fi
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
-  -Dvulkan-drivers=amd,intel,swrast,virtio-experimental \
+  -Dvulkan-drivers=amd,intel,swrast \
   -Dshader-cache=enabled \
   -Dvulkan-layers=device-select,intel-nullhw,overlay \
   -Dshared-glapi=enabled \
