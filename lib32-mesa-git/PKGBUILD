@@ -60,17 +60,10 @@ prepare(){
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  #sed -i "s/options.StackAlignmentOverride = 4;/ /" src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
-
-  #sed -i 's/lc->header_idx_old = std::exchange(ctx->cf_info.parent_loop.header_idx, loop_header->index);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  #sed -i 's/lc->exit_old = std::exchange(ctx->cf_info.parent_loop.exit, &lc->loop_exit);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  #sed -i 's/lc->divergent_cont_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_continue, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  #sed -i 's/lc->divergent_branch_old = std::exchange(ctx->cf_info.parent_loop.has_divergent_branch, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
-  #sed -i 's/lc->divergent_if_old = std::exchange(ctx->cf_info.parent_if.is_divergent, false);/ /' $srcdir/mesa/src/amd/compiler/aco_instruction_selection.cpp
 }
 
 build(){
+
 if [[ $_compiler = "1" ]]; then
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -93,33 +86,7 @@ END
   rm -rf -v build_32
 
   mkdir -p -v build_32
-
-  # gallium-opencl is disabled for build against llvm master branch commit : e8806d748643e4b90fa67ed6f4819653e64e66d9 and mesa master branch commit : 9e3293bcd4c34b68b83efc0e7308f7d701e43db7
-  # we will see if this get fixed soon
-  # issue reported by me at : https://gitlab.freedesktop.org/mesa/mesa/-/issues/5444
-  # the issue can be on llvm-project side or mesa side. We will recompile in day to come if this get fixed
-
-  #Library clang-cpp found: YES
-  #Compiler for C++ supports link arguments -Wl,--rpath=/usr/lib32: YES
-  #Checking if "dep-clang-usable" with dependencies LLVM, -lclang-cpp, threads runs: DID NOT COMPILE
-  #Library clangCodeGen found: YES
-  #Library clangFrontendTool found: YES
-  #Library clangFrontend found: YES
-  #Library clangDriver found: YES
-  #Library clangSerialization found: YES
-  #Library clangParse found: YES
-  #Library clangSema found: YES
-  #Library clangAnalysis found: YES
-  #Library clangAST found: YES
-  #Library clangASTMatchers found: YES
-  #Library clangEdit found: YES
-  #Library clangLex found: YES
-  #Library clangBasic found: YES
-  #Checking if "dep-clang-usable" with dependencies LLVM, -lclangCodeGen, -lclangFrontendTool, -lclangFrontend, -lclangDriver, -lclangSerialization, 
-  # -lclangParse, -lclangSema, -lclangAnalysis, -lclangAST, -lclangASTMatchers, -lclangEdit, -lclangLex, -lclangBasic, -lPolly, -lPollyISL, threads runs: DID NOT COMPILE
-
-  #src/gallium/targets/opencl/meson.build:83:6: ERROR: Problem encountered: No usable clang found!
-
+  
   meson setup build_32/ \
   --native-file crossfile.ini \
   -D b_ndebug=true \
@@ -164,8 +131,6 @@ END
   -Dlmsensors=enabled \
   -Dselinux=false \
   -Dosmesa=true \
-  -Dswr-arches=avx,avx2 \
-  -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
   -Dprefer-iris=true \
