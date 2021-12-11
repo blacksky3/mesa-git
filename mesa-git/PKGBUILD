@@ -128,8 +128,6 @@ fi
   -Dlmsensors=enabled \
   -Dselinux=false \
   -Dosmesa=true \
-  -Dswr-arches=avx,avx2 \
-  -Dshared-swr=true \
   -Dxlib-lease=enabled \
   -Dglx-direct=true \
   -Dprefer-iris=true \
