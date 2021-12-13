@@ -89,7 +89,6 @@ fi
   -Dplatforms=x11,wayland \
   -Degl-native-platform=auto \
   -Ddri3=enabled \
-  -Ddri-drivers=i915,i965,r100,r200,nouveau \
   -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
