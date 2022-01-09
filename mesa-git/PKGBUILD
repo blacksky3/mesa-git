@@ -30,7 +30,7 @@ makedepends=('meson' 'ninja' 'bison' 'flex' 'python' 'python-mako' 'python-appdi
              'xorgproto' 'wayland-protocols' 'glslang' 'libclc' 'elfutils' 'libarchive' 'libconfig' 'compiler-rt' 'libxcb'
              'wayland' 'libxml2' 'libx11' 'libvdpau' 'libelf' 'libglvnd' 'ncurses' 'libva' 'libxrandr' 'expat' 'libdrm'
              'libepoxy' 'libxv' 'libxshmfence' 'libxxf86vm' 'libxdamage' 'zstd' 'lm_sensors' 'libunwind' 'vulkan-icd-loader'
-             'llvm' 'clang' 'llvm-libs' 'glibc' 'gcc' 'gcc-libs' 'libomxil-bellagio')
+             'llvm' 'clang' 'llvm-libs' 'glibc' 'gcc' 'gcc-libs' 'libomxil-bellagio' 'directx-headers')
 depends=('libdrm' 'libxcb' 'wayland' 'python' 'libclc' 'clang' 'libx11' 'libxshmfence' 'zstd' 'libelf' 'llvm-libs' 'expat' 'libxxf86vm'
          'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader' 'llvm' 'clang' 'gcc-libs' 'gcc'
          'glslang')
@@ -89,7 +89,7 @@ fi
   -Dplatforms=x11,wayland \
   -Degl-native-platform=auto \
   -Ddri3=enabled \
-  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus \
+  -Dgallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,zink,crocus,d3d12 \
   -Dgallium-extra-hud=true \
   -Dgallium-vdpau=enabled \
   -Dgallium-xvmc=disabled \
