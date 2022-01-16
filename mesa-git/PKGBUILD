@@ -21,7 +21,7 @@ fi
 
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
-pkgver=21.3.0_devel.145020.8c6e789c240
+pkgver=22.0.0_devel.148904.f6ffefba3e4
 pkgrel=1
 arch=('x86_64')
 url="https://mesa3d.org/"
