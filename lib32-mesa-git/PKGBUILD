@@ -33,7 +33,7 @@ makedepends=('meson' 'ninja' 'bison' 'lib32-flex' 'python' 'python-mako' 'python
              'lib32-vulkan-icd-loader' 'lib32-clang' 'lib32-llvm' 'lib32-llvm-libs' 'lib32-glibc' 'gcc' 'lib32-gcc-libs' 'directx-headers')
 depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-wayland' 'python' 'libclc' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-zstd' 'lib32-libelf'
          'lib32-llvm-libs' 'lib32-expat' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libunwind' 'lib32-lm_sensors' 'lib32-libglvnd'
-         'lib32-vulkan-icd-loader' 'lib32-llvm' 'lib32-clang' 'lib32-gcc-libs' 'gcc' 'glslang' 'vulkan-mesa-layers' 'opencl-mesa' 'mesa')
+         'lib32-vulkan-icd-loader' 'lib32-gcc-libs' 'glslang' 'vulkan-mesa-layers' 'opencl-mesa' 'mesa' 'lib32-clang')
 conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa' 'lib32-vulkan-swrast'
            'lib32-vulkan-mesa-layers' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-llvm-git')
 provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-driver'
