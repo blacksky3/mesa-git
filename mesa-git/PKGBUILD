@@ -28,7 +28,7 @@ pkgrel=1
 arch=(x86_64)
 url='https://mesa3d.org/'
 license=(MIT)
-makedepends=(meson ninja bison flex python python-mako python-appdirs python-evdev lua polly valgrind
+makedepends=(meson ninja bison flex python python-mako valgrind
              xorgproto wayland-protocols glslang libclc elfutils libarchive libconfig compiler-rt libxcb
              wayland libxml2 libx11 libvdpau libelf libglvnd ncurses libva libxrandr expat libdrm
              libepoxy libxv libxshmfence libxxf86vm libxdamage zstd lm_sensors libunwind vulkan-icd-loader
