@@ -22,12 +22,12 @@ fi
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
-pkgver=22.0.0_devel.148904.f6ffefba3e4
+pkgver=22.1.0_devel.151055.16cb957e8bd
 pkgrel=1
 arch=(i686 x86_64)
 url='https://mesa3d.org/'
 license=(MIT)
-makedepends=(meson ninja bison lib32-flex python python-mako valgrind
+makedepends=(meson ninja bison lib32-flex python python-mako valgrind cmake
              xorgproto wayland-protocols glslang libclc elfutils libarchive libconfig compiler-rt lib32-libxcb
              lib32-wayland lib32-libxml2 lib32-libx11 lib32-libvdpau lib32-libelf lib32-libglvnd lib32-ncurses
              lib32-libva lib32-libxrandr lib32-expat lib32-libdrm lib32-libepoxy lib32-libxv
@@ -42,8 +42,10 @@ provides=(lib32-mesa lib32-opencl-mesa lib32-vulkan-intel lib32-vulkan-radeon li
           lib32-vulkan-mesa-layers lib32-libva-mesa-driver lib32-mesa-vdpau lib32-opengl-driver lib32-opencl-driver lib32-mesa-libgl)
 
 source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
-        clover-common.patch)
+        clover-common.patch
+        clover-llvm.patch)
 md5sums=(SKIP
+         SKIP
          SKIP)
 
 pkgver(){
@@ -111,7 +113,7 @@ END
   -Dgallium-xa=enabled \
   -Dgallium-nine=true \
   -Dgallium-d3d10umd=false \
-  -Dgallium-opencl=enabled \
+  -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
   -Dvulkan-drivers=amd,intel,swrast,virtio-experimental \
@@ -138,7 +140,8 @@ END
   -Dglx-direct=true \
   -Dzstd=enabled \
   -Dzlib=enabled \
-  -Dsse2=false
+  -Dsse2=false \
+  -Dvulkan-beta=true
 
   meson configure build_32/
 

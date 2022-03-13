@@ -23,12 +23,12 @@ fi
 
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
-pkgver=22.0.0_devel.148904.f6ffefba3e4
+pkgver=22.1.0_devel.151055.16cb957e8bd
 pkgrel=1
 arch=(x86_64)
 url='https://mesa3d.org/'
 license=(MIT)
-makedepends=(meson ninja bison flex python python-mako valgrind
+makedepends=(meson ninja bison flex python python-mako valgrind cmake
              xorgproto wayland-protocols glslang libclc elfutils libarchive libconfig compiler-rt libxcb
              wayland libxml2 libx11 libvdpau libelf libglvnd ncurses libva libxrandr expat libdrm
              libepoxy libxv libxshmfence libxxf86vm libxdamage zstd lm_sensors libunwind vulkan-icd-loader
@@ -41,8 +41,10 @@ conflicts=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-mesa vulkan-swrast
 provides=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-swrast vulkan-driver vulkan-mesa-layers libva-mesa-driver mesa-vdpau
           opengl-driver opencl-driver mesa-libgl)
 source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
-        clover-common.patch)
+        clover-common.patch
+        clover-llvm.patch)
 md5sums=(SKIP
+         SKIP
          SKIP)
 
 pkgver(){
@@ -128,7 +130,8 @@ fi
   -Dglx-direct=true \
   -Dzstd=enabled \
   -Dzlib=enabled \
-  -Dsse2=false
+  -Dsse2=false \
+  -Dvulkan-beta=true
 
   meson configure build_64/
 
