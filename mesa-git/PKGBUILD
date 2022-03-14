@@ -10,17 +10,6 @@
 #Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl> ---> For the base PKGBULD
 #Credits: Laurent Carlier <lordheavym@gmail.com> ---> For the base PKGBUILD
 
-#######################################
-
-#Set '1' to build with GCC
-#Set '2' to build with CLANG
-#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
-if [ -z ${_compiler+x} ]; then
-  _compiler=
-fi
-
-#######################################
-
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
 pkgver=22.1.0_devel.151055.16cb957e8bd
@@ -68,17 +57,6 @@ prepare(){
 }
 
 build(){
-if [[ $_compiler = "1" ]]; then
-  export CC='gcc'
-  export CXX='g++'
-elif [[ $_compiler = "2" ]]; then
-  export CC='clang'
-  export CXX='clang++'
-else
-  export CC='gcc'
-  export CXX='g++'
-fi
-
   cd ${srcdir}/mesa
 
   rm -rf -v build_64
