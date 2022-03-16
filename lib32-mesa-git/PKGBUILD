@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
-pkgver=22.1.0_devel.151055.16cb957e8bd
+pkgver=22.1.0_devel.151188.83de19c900d
 pkgrel=1
 arch=(i686 x86_64)
 url='https://mesa3d.org/'
@@ -19,7 +19,7 @@ license=(MIT)
 makedepends=(meson ninja bison lib32-flex python python-mako valgrind cmake
              xorgproto wayland-protocols glslang libclc elfutils libarchive libconfig compiler-rt lib32-libxcb
              lib32-wayland lib32-libxml2 lib32-libx11 lib32-libvdpau lib32-libelf lib32-libglvnd lib32-ncurses
-             lib32-libva lib32-libxrandr lib32-expat lib32-libdrm lib32-libepoxy lib32-libxv
+             lib32-libva lib32-libxrandr lib32-expat lib32-libdrm lib32-libxv
              lib32-libxshmfence lib32-libxxf86vm lib32-libxdamage lib32-zstd lib32-lm_sensors lib32-libunwind
              lib32-vulkan-icd-loader lib32-clang lib32-llvm lib32-llvm-libs lib32-glibc gcc lib32-gcc-libs directx-headers)
 depends=(lib32-libdrm lib32-libxcb lib32-wayland python libclc lib32-libx11 lib32-libxshmfence lib32-zstd lib32-libelf
