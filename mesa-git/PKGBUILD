@@ -6,13 +6,13 @@
 #                                  |___/
 
 #Maintainer: blacksky3 <blacksky3@tuta.io> <https://github.com/blacksky3>
-#Credits: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com ---> For the base PKGBULD 
+#Credits: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com ---> For the base PKGBULD
 #Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl> ---> For the base PKGBULD
 #Credits: Laurent Carlier <lordheavym@gmail.com> ---> For the base PKGBUILD
 
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
-pkgver=22.1.0_devel.151055.16cb957e8bd
+pkgver=22.1.0_devel.151648.ae710f33296
 pkgrel=1
 arch=(x86_64)
 url='https://mesa3d.org/'
@@ -23,18 +23,14 @@ makedepends=(meson ninja bison flex python python-mako valgrind cmake
              libxv libxshmfence libxxf86vm libxdamage zstd lm_sensors libunwind vulkan-icd-loader
              llvm clang llvm-libs glibc gcc gcc-libs libomxil-bellagio directx-headers)
 depends=(libdrm libxcb wayland python libclc libx11 libxshmfence zstd libelf expat libxxf86vm
-         libxdamage libomxil-bellagio libunwind lm_sensors libglvnd vulkan-icd-loader 
+         libxdamage libomxil-bellagio libunwind lm_sensors libglvnd vulkan-icd-loader
          llvm-libs gcc-libs glslang clang)
 #depends+=(libsensors.so libexpat.so libvulkan.so)
 conflicts=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-mesa vulkan-swrast vulkan-mesa-layers libva-mesa-driver mesa-vdpau)
 provides=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-swrast vulkan-driver vulkan-mesa-layers libva-mesa-driver mesa-vdpau
           opengl-driver opencl-driver mesa-libgl)
-source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
-        clover-common.patch
-        clover-llvm.patch)
-md5sums=(SKIP
-         SKIP
-         SKIP)
+source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git)
+md5sums=(SKIP)
 
 pkgver(){
   cd ${srcdir}/mesa
@@ -84,7 +80,8 @@ build(){
   -Dgallium-opencl=icd \
   -Dopencl-spirv=false \
   -Dopencl-native=true \
-  -Dvulkan-drivers=amd,intel,swrast,virtio-experimental \
+  -Dvulkan-drivers=amd,intel,swrast,virtio-experimental,imagination-experimental \
+  -Dimagination-srv=true \
   -Dshader-cache=enabled \
   -Dvulkan-layers=device-select,intel-nullhw,overlay \
   -Dshared-glapi=enabled \
@@ -109,7 +106,8 @@ build(){
   -Dzstd=enabled \
   -Dzlib=enabled \
   -Dsse2=false \
-  -Dvulkan-beta=true
+  -Dvulkan-beta=true \
+  -Dintel-clc=enabled
 
   meson configure build_64/
 
