@@ -6,8 +6,8 @@
 #                                  |___/
 
 #Maintainer: blacksky3 <blacksky3@tuta.io> <https://github.com/blacksky3>
-#Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl> ---> For the base PKGBULD
-#Credits: Laurent Carlier <lordheavym@gmail.com> ---> For the base PKGBUILD
+#Credits: Laurent Carlier <lordheavym@gmail.com>
+#Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 
 pkgname=lib32-mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (32-bit) (git release)'
