@@ -29,7 +29,6 @@ conflicts=(lib32-mesa lib32-opencl-mesa lib32-vulkan-intel lib32-vulkan-radeon l
            lib32-vulkan-mesa-layers lib32-libva-mesa-driver lib32-mesa-vdpau)
 provides=(lib32-mesa lib32-opencl-mesa lib32-vulkan-intel lib32-vulkan-radeon lib32-vulkan-driver
           lib32-vulkan-mesa-layers lib32-libva-mesa-driver lib32-mesa-vdpau lib32-opengl-driver lib32-opencl-driver lib32-mesa-libgl)
-
 source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git)
 md5sums=(SKIP)
 
