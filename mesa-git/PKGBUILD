@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
-pkgver=22.1.0_devel.151648.ae710f33296
+pkgver=22.2.0_devel.153761.e693e5e5950
 pkgrel=1
 arch=(x86_64)
 url='https://mesa3d.org/'
@@ -29,7 +29,7 @@ depends=(libdrm libxcb wayland python libclc libx11 libxshmfence zstd libelf exp
 conflicts=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-mesa vulkan-swrast vulkan-mesa-layers libva-mesa-driver mesa-vdpau)
 provides=(mesa opencl-mesa vulkan-intel vulkan-radeon vulkan-swrast vulkan-driver vulkan-mesa-layers libva-mesa-driver mesa-vdpau
           opengl-driver opencl-driver mesa-libgl)
-source=(mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git)
+source=(git+https://gitlab.freedesktop.org/mesa/mesa.git)
 md5sums=(SKIP)
 
 pkgver(){
@@ -107,7 +107,8 @@ build(){
   -Dzlib=enabled \
   -Dsse2=false \
   -Dvulkan-beta=true \
-  -Dintel-clc=enabled
+  -Dintel-clc=enabled \
+  -Dvideo-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
 
   meson configure build_64/
 
