@@ -14,7 +14,7 @@ pkgname=mesa-git
 pkgdesc='An open-source implementation of the OpenGL specification. (git release)'
 pkgver=22.2.0_devel.153761.e693e5e5950
 pkgrel=1
-commit=3e679219a110ecff858ef7cc94d01a7df17e884c
+commit=9ca0c0b4b40831038cac027bd342b2405e0716db
 arch=(x86_64)
 url='https://mesa3d.org/'
 license=(MIT)
@@ -54,6 +54,14 @@ prepare(){
 }
 
 build(){
+# Build only minimal debug info to reduce size
+CFLAGS+=' -g1'
+CXXFLAGS+=' -g1'
+
+# https://gitlab.freedesktop.org/mesa/mesa/-/issues/6229
+CFLAGS+=' -mtls-dialect=gnu'
+CXXFLAGS+=' -mtls-dialect=gnu'
+
   cd ${srcdir}/mesa
 
   rm -rf -v build_64
